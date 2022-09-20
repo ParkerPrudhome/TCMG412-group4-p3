@@ -15,8 +15,8 @@ if path.isfile('logfile.txt') == False:
     print('done')
 else: print('this file is already present on your workstation')
 
-lastsixmonths = ["May/1995:", "Jun/1995:" , "Jul/1995:", "Aug/1995:", "Sep/1995:", "Oct/1995:"]  
-lastsix = 0
+date = lines.split(':')
+date = '11/Apr/1995'
 request_total = 0
 
 with open(r"logfile.txt", 'r') as fp:
@@ -27,9 +27,13 @@ for line in open(r"logfile.txt", 'r'):
     if "GET" in line:
         request_total += 1
         
-        for month in lastsixmonths:
-            if month in line:
-                lastsix +=1
+        start = 0
+        for line in lines:
+            start += 1
+            if date in line:
+                 break
+    
+        lastsix = lines - start + 1
 
 print("total number of requests:" , request_total)
 
